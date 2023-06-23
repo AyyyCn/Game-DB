@@ -1,15 +1,15 @@
 from googleapiclient.discovery import build
 import pandas as pd
 import sqlite3
-conn = sqlite3.connect('game_reviews.sqlite')
+conn = sqlite3.connect('game_reviews_indie.sqlite')
 
 c= conn.cursor()
 #c.execute('''CREATE TABLE comments (game Text, comment Text)''')
 conn.commit()
 conn.close()
 # Replace with your YouTube Data API key.
-api_key = "AIzaSyCWVno9BT4udY9t2W1nwdkBSIWMLQT4ifU"
-
+#api_key = "AIzaSyCWVno9BT4udY9t2W1nwdkBSIWMLQT4ifU"
+api_key ="AIzaSyAo8di5nL4O_GA6gUZ46ZCJD5MjJT5r1Bo"
 youtube = build('youtube', 'v3', developerKey=api_key)
 
 def get_comments(video_id,game_name, max_results=200):
@@ -20,7 +20,7 @@ def get_comments(video_id,game_name, max_results=200):
         textFormat="plainText"
     )
     response = request.execute()
-    conn = sqlite3.connect('game_reviews.sqlite')
+    conn = sqlite3.connect('game_reviews_indie.sqlite')
     c = conn.cursor()
 
     for item in response["items"]:
@@ -32,7 +32,7 @@ def get_comments(video_id,game_name, max_results=200):
     conn.commit()
     conn.close()
 
-def get_videos(game_name, max_results=4):
+def get_videos(game_name, max_results=2):
     request = youtube.search().list(
         q=f"{game_name} game review",
         part="id,snippet",
@@ -42,10 +42,17 @@ def get_videos(game_name, max_results=4):
     response = request.execute()
 
     for item in response["items"]:
-        print(f'Title: {item["snippet"]["title"]}, Video ID: {item["id"]["videoId"]}')
+        print(f'Video ID: {item["id"]["videoId"]}')
         get_comments(item["id"]["videoId"],game_name)
         
-pd = pd.read_csv('final_data.csv')
+#pd = pd.read_csv('final_data.csv')
+#for i in pd['Title']:
+#    get_videos(i)
 
-for i in pd['Title']:
-    get_videos(i)
+with open('indieGameList.txt','r') as f:
+    i=0
+    for line in f:
+        if i>94:
+            get_videos(line.strip())
+        i+=1
+print('finished')
