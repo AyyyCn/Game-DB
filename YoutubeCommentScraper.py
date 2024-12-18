@@ -8,7 +8,6 @@ c= conn.cursor()
 conn.commit()
 conn.close()
 # Replace with your YouTube Data API key.
-#api_key = "AIzaSyCWVno9BT4udY9t2W1nwdkBSIWMLQT4ifU"
 api_key ="AIzaSyAo8di5nL4O_GA6gUZ46ZCJD5MjJT5r1Bo"
 youtube = build('youtube', 'v3', developerKey=api_key)
 

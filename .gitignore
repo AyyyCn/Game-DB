@@ -1,0 +1,28 @@
+# Ignore folders
+Databases/
+csv/
+local/
+bert/fine_tuned_model/
+
+# Ignore specific file types
+*.csv
+*.txt
+*.sqlite
+
+# Ignore specific files
+CleanUp.py
+DBmerger.py
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
