@@ -1,35 +1,70 @@
-# Game-DB
+# 🎮 **Game-Insight: Aspect-Based Sentiment Analysis**
 
-## Overview
-Game-DB is a data scraping and processing tool that gathers reviews and comments from various sources like Reddit and YouTube. The project focuses on collecting feedback related to games, cleaning the raw data, and storing it in a structured database for future analysis. A planned feature will enable the extraction of users' likes and dislikes from the processed data.
+Discover what players love (or hate) about games! This project analyzes user reviews to identify game aspects (e.g., graphics, gameplay) and their associated sentiments using **NER** and **BERT**.
 
-## Features
-- Scrapes data from Reddit and YouTube.
-- Cleans and processes raw text data.
-- Stores processed data in a structured database.
+---
 
-## Future Development
-- Implement an analysis feature to extract user preferences (likes/dislikes).
+## 🚀 **Features**
+- **Aspect Extraction**: Detects game aspects like *graphics*, *gameplay*, and *story*.
+- **Sentiment Analysis**: Classifies sentiments as *Positive*, *Neutral*, or *Negative*.
+- **Visual Insights**: Generates interactive charts and word clouds for trends.
 
-## Installation
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/AyyyCn/Game-DB.git
-    ```
-2. Install required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+---
 
-## Usage
-- Run the scraper:
-    ```bash
-    python scraper.py
-    ```
-- Clean and store the data:
-    ```bash
-    python clean_and_store.py
-    ```
+## 🔧 **How It Works**
+1. **Scraping**: Collect user reviews from sources like forums, YouTube comments, and Reddit posts.
+2. **BERT Fine-Tuning**: Train a BERT model on labeled sentiment data to classify user sentiments.
+3. **Aspect Analysis**: Use NER and keyword matching to detect specific aspects (e.g., graphics, gameplay) in the comments.
+4. **Visualization**: Generate bar charts, word clouds, and other visual insights to understand sentiment trends.
 
-## Contribution
-Feel free to contribute to this project by opening issues or submitting pull requests.
+---
+
+## 🔧 **Setup**
+
+### Prerequisites
+- Python 3.9+
+- Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Steps
+1. **Clone Repository**:
+   ```bash
+   git clone https://github.com/YourUsername/Game-Insight.git
+   cd Game-Insight
+   ```
+
+2. **Scrape User Reviews**:
+   - Use the provided scraper scripts in the `scrapers/` folder to gather comments from YouTube or Reddit.
+
+3. **Fine-Tune BERT**:
+   - Prepare sentiment-labeled data.
+   - Train the BERT model using:
+     ```bash
+     python bert/train_bert.py
+     ```
+
+4. **Aspect Analysis**:
+   - Extract aspects from the comments:
+     ```bash
+     python aspect_analysis/aspect_extraction.py
+     ```
+   - Perform sentiment analysis on the extracted aspects:
+     ```bash
+     python aspect_analysis/aspect_sentiment.py
+     ```
+
+5. **Visualize Results**:
+   - Generate charts and word clouds:
+     ```bash
+     python visualize_aspects.py
+     ```
+
+---
+
+## 🌟 **Planned Features**
+- **Interactive Web Dashboard** for real-time analysis.
+- Fine-tuned **ABSA Models** for deeper aspect-specific insights.
+
+
